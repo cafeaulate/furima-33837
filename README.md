@@ -2,23 +2,22 @@
 
 ## users テーブル
 
-| Column         | Type       | Options                   |
-| -------------- | ---------- | ------------------------- |
-| nickname       | string     | null: false               |
-| email          | string     | null: false, unique: true |
-| pass           | string     | null: false               |
-| f_name         | string     | null: false               |
-| l_name         | string     | null: false               |
-| f_name_kana    | string     | null: false               |
-| l_name_kana    | string     | null: false               |
-| year           | integer    | null: false               | <!--Activehashで記述 -->
-| month          | integer    | null: false               | <!--Activehashで記述 -->
-| day            | integer    | null: false               | <!--Activehashで記述 -->
+| Column             | Type       | Options                   |
+| ------------------ | ---------- | ------------------------- |
+| nickname           | string     | null: false               |
+| email              | string     | null: false, unique: true |
+| encrypted_password | string     | null: false               |
+| f_name             | string     | null: false               |
+| l_name             | string     | null: false               |
+| f_name_kana        | string     | null: false               |
+| l_name_kana        | string     | null: false               |
+| birthday           | date       | null: false               |
 
 ### Association
 
 - has_many :products
 - has_many :records
+- has_one :send
 
 
 ## products テーブル
@@ -30,39 +29,42 @@
 | category_id    | integer    | null: false                    | <!--Activehashで記述 -->
 | status_id      | integer    | null: false                    | <!--Activehashで記述 -->
 | charge_id      | integer    | null: false                    | <!--Activehashで記述 -->
-| area_id        | integer    | null: false                    | <!--Activehashで記述 -->
+| prefuctures_id | integer    | null: false                    | <!--Activehashで記述 -->
 | span_id        | integer    | null: false                    | <!--Activehashで記述 -->
 | price          | integer    | null: false                    |
-| user           | reference  |                                |
+| user           | reference  |  foreign_key: true             |
 
 
 ### Association
 
-- belongs_to :users
-- has_one :records
-- has_one :sends
+- belongs_to :user
+- has_one :record
 
 ## records テーブル
 
-| Column     | Type       | Options                        |　
+| Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| user       | reference  |                                |
-| product    | reference  |                                |
+| user       | reference  | foreign_key: true              |
+| product    | reference  | foreign_key: true              |
 
 ### Association
 
-- belongs_to :products
+- belongs_to :product
+- has_one :send
 
 ## sends テーブル
 
-| Column             | Type       | Options                        |　
+| Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | postal_code        | string     |                                |
 | prefuctures_id     | integer    |                                | <!--Activehashで記述 -->
-| manicipality       | text       |                                |
+| manicipality       | string     |                                |
 | address            | string     |                                |
-| phone              | integer    |                                |
+| phone              | string     |                                |
+| record             | reference  | foreign_key: true              |
+
 
 ### Association
 
-- belongs_to :products
+- belongs_to :user
+- belongs_to :record
