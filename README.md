@@ -17,7 +17,6 @@
 
 - has_many :products
 - has_many :records
-- has_one :send
 
 
 ## products テーブル
@@ -29,10 +28,10 @@
 | category_id    | integer    | null: false                    | <!--Activehashで記述 -->
 | status_id      | integer    | null: false                    | <!--Activehashで記述 -->
 | charge_id      | integer    | null: false                    | <!--Activehashで記述 -->
-| prefuctures_id | integer    | null: false                    | <!--Activehashで記述 -->
+| prefucture_id  | integer    | null: false                    | <!--Activehashで記述 -->
 | span_id        | integer    | null: false                    | <!--Activehashで記述 -->
 | price          | integer    | null: false                    |
-| user           | reference  |  foreign_key: true             |
+| user           | references | foreign_key: true              |
 
 
 ### Association
@@ -44,8 +43,8 @@
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| user       | reference  | foreign_key: true              |
-| product    | reference  | foreign_key: true              |
+| user       | references | foreign_key: true              |
+| product    | references | foreign_key: true              |
 
 ### Association
 
@@ -56,15 +55,15 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| postal_code        | string     |                                |
-| prefuctures_id     | integer    |                                | <!--Activehashで記述 -->
-| manicipality       | string     |                                |
-| address            | string     |                                |
-| phone              | string     |                                |
-| record             | reference  | foreign_key: true              |
+| postal_code        | string     | null: false                    |
+| prefucture_id      | integer    | null: false                    | <!--Activehashで記述 -->
+| manicipality       | string     | null: false                    |
+| address            | string     | null: false                    |
+| building           | integer    |                                |
+| phone              | string     | null: false                    |
+| record             | references | foreign_key: true              |
 
 
 ### Association
 
-- belongs_to :user
 - belongs_to :record
