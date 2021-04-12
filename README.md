@@ -50,6 +50,7 @@
 
 - belongs_to :product
 - has_one :send
+- belongs_to :user
 
 ## sends テーブル
 
