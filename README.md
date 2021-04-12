@@ -60,7 +60,7 @@
 | prefucture_id      | integer    | null: false                    | <!--Activehashで記述 -->
 | manicipality       | string     | null: false                    |
 | address            | string     | null: false                    |
-| building           | integer    |                                |
+| building           | string     |                                |
 | phone              | string     | null: false                    |
 | record             | references | foreign_key: true              |
 
