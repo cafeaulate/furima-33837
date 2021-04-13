@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  root to: "prototypes#index"
+
+  get 'items/index'
+  root to: "items#index"
+  
 end
