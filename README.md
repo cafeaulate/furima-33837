@@ -1,24 +1,70 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type       | Options                   |
+| ------------------ | ---------- | ------------------------- |
+| nickname           | string     | null: false               |
+| email              | string     | null: false, unique: true |
+| encrypted_password | string     | null: false               |
+| f_name             | string     | null: false               |
+| l_name             | string     | null: false               |
+| f_name_kana        | string     | null: false               |
+| l_name_kana        | string     | null: false               |
+| birthday           | date       | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :products
+- has_many :records
 
-* Configuration
 
-* Database creation
+## products テーブル
 
-* Database initialization
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| product        | string     | null: false                    |
+| text           | text       | null: false                    |
+| category_id    | integer    | null: false                    | <!--Activehashで記述 -->
+| status_id      | integer    | null: false                    | <!--Activehashで記述 -->
+| charge_id      | integer    | null: false                    | <!--Activehashで記述 -->
+| prefucture_id  | integer    | null: false                    | <!--Activehashで記述 -->
+| span_id        | integer    | null: false                    | <!--Activehashで記述 -->
+| price          | integer    | null: false                    |
+| user           | references | foreign_key: true              |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :user
+- has_one :record
 
-* ...
+## records テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| user       | references | foreign_key: true              |
+| product    | references | foreign_key: true              |
+
+### Association
+
+- belongs_to :product
+- has_one :send
+- belongs_to :user
+
+## sends テーブル
+
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| postal_code        | string     | null: false                    |
+| prefucture_id      | integer    | null: false                    | <!--Activehashで記述 -->
+| manicipality       | string     | null: false                    |
+| address            | string     | null: false                    |
+| building           | string     |                                |
+| phone              | string     | null: false                    |
+| record             | references | foreign_key: true              |
+
+
+### Association
+
+- belongs_to :record
