@@ -9,8 +9,6 @@ class User < ApplicationRecord
   validates :f_name_kana, presence: true
   validates :l_name_kana, presence: true
   validates :birthday, presence: true
+  validates :password,:password_confirmation, format:{with: /\A(?=.*?[a-z])[a-z\d]+\z/}
 
-
-
-         
 end
