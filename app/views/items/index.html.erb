@@ -128,9 +128,10 @@
 
       <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id), method: :get do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
+          <%# <%= link_to image_tag(prototype.image, class: :card__img ), prototype_path(prototype.id), method: :get%>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <%# <div class='sold-out'>
