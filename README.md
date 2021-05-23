@@ -37,14 +37,14 @@
 ### Association
 
 - belongs_to :user
-- has_one :record
+- has_one :log
 
-## records テーブル
+## logs テーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | user       | references | foreign_key: true              |
-| product    | references | foreign_key: true              |
+| item       | references | foreign_key: true              |
 
 ### Association
 
@@ -62,9 +62,9 @@
 | address            | string     | null: false                    |
 | building           | string     |                                |
 | phone              | string     | null: false                    |
-| record             | references | foreign_key: true              |
+| log                | references | foreign_key: true              |
 
 
 ### Association
 
-- belongs_to :record
+- belongs_to :log
