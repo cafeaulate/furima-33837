@@ -52,7 +52,7 @@
 - has_one :send
 - belongs_to :user
 
-## sends テーブル
+## address テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
