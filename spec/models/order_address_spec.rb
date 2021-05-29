@@ -13,7 +13,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeが空だと登録できない' do
         @order_address.postal_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeがハイフンなしの記述だと登録できない' do
         @order_address.postal_code = '9999999'
@@ -38,7 +38,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'phoneが空だと登録できない' do
         @order_address.phone = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone can't be blank", "Phone is invalid")
+        expect(@order_address.errors.full_messages).to include("Phone can't be blank")
       end
       it 'phoneにハイフンを記載すると登録できない' do
         @order_address.phone = '999-999-999'
