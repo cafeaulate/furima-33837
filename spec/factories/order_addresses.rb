@@ -4,10 +4,8 @@ FactoryBot.define do
     prefecture_id   { 2 }
     manicipality  { '山形市' }
     address     { 'テスト1-1' }
-    building    { nil }
+    building    { 'テスト１' }
     phone      { '00000000000' }
-    user_id    {2}
-    item_id    {2}
     token     {"tok_abcdefghijk00000000000000000"}
   end
 end

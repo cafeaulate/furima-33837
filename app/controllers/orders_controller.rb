@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item
   before_action :move_to_index
 
+
   def index
     @order_address = OrderAddress.new
   end
@@ -27,7 +28,7 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
   def move_to_index
-    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
   end
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
