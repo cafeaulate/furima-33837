@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one :order
   has_one_attached :image
 
   validates :category_id, :charge_id, :prefecture_id, :span_id, :status_id, numericality: { other_than: 1 }
