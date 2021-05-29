@@ -46,6 +46,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone is invalid")
       end
+      it 'tokenが空だと登録できない' do
+        @order_address.token = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
     context '商品購入が成功する時' do
       it '全ての情報を正しく入力すれば新規登録が完了する' do
