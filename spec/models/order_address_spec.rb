@@ -4,9 +4,8 @@ RSpec.describe OrderAddress, type: :model do
   before do
     @user = FactoryBot.create(:user)
     @item = FactoryBot.create(:item)
-    @order_address = FactoryBot.build(:order_address, user_id: @user.id , item_id: @item.id)
+    @order_address = FactoryBot.build(:order_address, user_id: @user.id, item_id: @item.id)
     sleep 0.1
-
   end
   describe '商品購入' do
     context '商品購入が失敗する時' do
@@ -18,7 +17,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeがハイフンなしの記述だと登録できない' do
         @order_address.postal_code = '9999999'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it 'prefecture_idが0だと登録できない' do
         @order_address.prefecture_id = 0
@@ -43,12 +42,12 @@ RSpec.describe OrderAddress, type: :model do
       it 'phoneにハイフンを記載すると登録できない' do
         @order_address.phone = '999-999-999'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it 'phoneが11桁以上だと登録できない' do
         @order_address.phone = '999999999999'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it 'tokenが空だと登録できない' do
         @order_address.token = nil
